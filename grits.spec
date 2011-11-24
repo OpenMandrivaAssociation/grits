@@ -10,6 +10,7 @@ Group:		System/Libraries
 License:	GPLv3
 Source0:	http://lug.rose-hulman.edu/proj/grits/%{name}-%{version}.tar.gz
 BuildRequires:	GL-devel
+BuildRequires:	libglu-devel
 BuildRequires:	cairo-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libsoup-devel
