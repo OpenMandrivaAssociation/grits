@@ -9,6 +9,7 @@ URL:		http://lug.rose-hulman.edu/code/projects/grits
 Group:		System/Libraries
 License:	GPLv3
 Source0:	http://lug.rose-hulman.edu/proj/grits/%{name}-%{version}.tar.gz
+BuildRequires:	GL-devel
 BuildRequires:	cairo-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libsoup-2.4-devel
