@@ -100,7 +100,8 @@ This package contains demo program using %{libgrits}
 %setup -q
 
 %build
-%configure2_5x --enable-shared --disable-static
+%configure2_5x	--enable-shared=yes \
+		--enable-static=no
 %make
 
 %install
