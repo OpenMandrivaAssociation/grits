@@ -64,7 +64,7 @@ This package contains files needed only for development.
 Requires:	%{libgrits_devel} == %{version}
 Summary:	Documentation for %libgrits Virtual Globe library
 
-%description -n %{libgrits_devel}
+%description doc
 libgrits is a Virtual Globe library that handles coordinates and the OpenGL
 viewport. Also provides some generic functionality and a plugin API. It is
 used by AWeather.
@@ -85,7 +85,7 @@ Group:		Sciences/Geosciences
 %{_mandir}/man1/grits-demo.1*
 %doc ChangeLog README TODO
 
-%description -n %{libgrits_devel}
+%description demo
 libgrits is a Virtual Globe library that handles coordinates and the OpenGL
 viewport. Also provides some generic functionality and a plugin API. It is
 used by AWeather.
