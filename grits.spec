@@ -15,7 +15,7 @@ BuildRequires:	libglu-devel
 BuildRequires:	cairo-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libsoup-devel
-BuildRequires:	libxml2-devel
+#BuildRequires:	libxml2-devel
 
 %description
 libgis is a Virtual Globe library that handles coordinates and the OpenGL
@@ -102,6 +102,8 @@ This package contains demo program using %{libgrits}
 %patch0 -p1
 
 %build
+automake
+autoconf
 %configure2_5x	--enable-shared=yes \
 		--enable-static=no
 %make
