@@ -1,8 +1,8 @@
 %define libgrits	%mklibname grits 2
-%define libgrits_devel	%mklibname -d grits 2
+%define libgrits_devel	%mklibname -d grits
 
 Name:		grits
-Version:	0.6
+Version:	0.6.2
 Release:	1
 Summary:	Virtual Globe library that handles coordinates and the OpenGL viewport
 URL:		http://lug.rose-hulman.edu/code/projects/grits
@@ -15,7 +15,7 @@ BuildRequires:	libglu-devel
 BuildRequires:	cairo-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libsoup-devel
-#BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel
 
 %description
 libgis is a Virtual Globe library that handles coordinates and the OpenGL
