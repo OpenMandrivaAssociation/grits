@@ -10,6 +10,7 @@ Group:		System/Libraries
 License:	GPLv3
 Source0:	http://lug.rose-hulman.edu/proj/grits/%{name}-%{version}.tar.gz
 Patch0:		grits-0.6-dynamic.patch
+Patch1:		grits-0.6.2-link.patch
 BuildRequires:	GL-devel
 BuildRequires:	libglu-devel
 BuildRequires:	cairo-devel
@@ -100,10 +101,10 @@ This package contains demo program using %{libgrits}
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-automake
-autoconf
+autoreconf
 %configure2_5x	--enable-shared=yes \
 		--enable-static=no
 %make
