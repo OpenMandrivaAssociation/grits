@@ -2,7 +2,7 @@
 %define libgrits_devel	%mklibname -d grits
 
 Name:		grits
-Version:	0.6.2
+Version:	0.6.3
 Release:	1
 Summary:	Virtual Globe library that handles coordinates and the OpenGL viewport
 URL:		http://lug.rose-hulman.edu/code/projects/grits
@@ -100,7 +100,7 @@ This package contains demo program using %{libgrits}
 
 %prep
 %setup -q
-%patch0 -p1
+#patch0 -p1
 %patch1 -p1
 
 %build
