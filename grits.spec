@@ -9,10 +9,9 @@ URL:		http://lug.rose-hulman.edu/code/projects/grits
 Group:		System/Libraries
 License:	GPLv3
 Source0:	http://lug.rose-hulman.edu/proj/grits/%{name}-%{version}.tar.gz
-Patch0:		grits-0.6-dynamic.patch
 Patch1:		grits-0.6.2-link.patch
 BuildRequires:	GL-devel
-BuildRequires:	libglu-devel
+BuildRequires:	pkgconfig(glu)
 BuildRequires:	cairo-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libsoup-devel
@@ -100,7 +99,6 @@ This package contains demo program using %{libgrits}
 
 %prep
 %setup -q
-#patch0 -p1
 %patch1 -p1
 
 %build
