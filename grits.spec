@@ -1,8 +1,9 @@
-%define libgrits	%mklibname grits 2
+%define major		4
+%define libgrits	%mklibname grits %{major}
 %define libgrits_devel	%mklibname -d grits
 
 Name:		grits
-Version:	0.6.3
+Version:	0.7
 Release:	1
 Summary:	Virtual Globe library that handles coordinates and the OpenGL viewport
 URL:		http://lug.rose-hulman.edu/code/projects/grits
@@ -34,9 +35,8 @@ viewport. Also provides some generic functionality and a plugin API. It is
 used by AWeather.
 
 %files -n %{libgrits}
-%{_libdir}/*.so.*
-%{_libdir}/grits2/*.so
-%doc ChangeLog README TODO
+%{_libdir}/*.so.%{major}*
+%{_libdir}/grits%{major}/*.so
 
 #------------------------------------------------------------------------------
 
@@ -110,3 +110,4 @@ autoreconf
 %install
 %makeinstall_std
 find %{buildroot} -name '*.la' -delete
+install -d -m 755 %{buildroot}%{_docdir}/%{libgrits_devel}
