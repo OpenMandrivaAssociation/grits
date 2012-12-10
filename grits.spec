@@ -111,3 +111,34 @@ autoreconf
 %makeinstall_std
 find %{buildroot} -name '*.la' -delete
 install -d -m 755 %{buildroot}%{_docdir}/%{libgrits_devel}
+
+
+%changelog
+* Fri Feb 17 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.7-1
++ Revision: 776166
+- update to 0.7
+
+* Wed Jan 11 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.6.3-1
++ Revision: 760186
+- BR fixed
+- unneeded patch removed
+- new version 0.6.3
+
+* Wed Dec 21 2011 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.6.2-1
++ Revision: 744152
+- fixed linking to libgmodule-2.0
+- new version 0.6.2
+
+* Fri Nov 25 2011 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.6-1
++ Revision: 733329
+- Fixing dynamic linking
+- Use dynamic linking
+- one more fix in BR
+- one more fix in BR
+- one more fix in BR
+- libsoup BR fixed
+- BR fixed
+- Descriptions fixed
+- Package descriptions added
+- imported package grits
+
