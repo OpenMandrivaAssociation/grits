@@ -1,22 +1,22 @@
-%define major		4
-%define libgrits	%mklibname grits %{major}
-%define libgrits_devel	%mklibname -d grits
+%define major 4
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
 
+Summary:	Virtual Globe library that handles coordinates and the OpenGL viewport
 Name:		grits
 Version:	0.7
-Release:	1
-Summary:	Virtual Globe library that handles coordinates and the OpenGL viewport
-URL:		http://lug.rose-hulman.edu/code/projects/grits
+Release:	2
+License:	GPLv3+
 Group:		System/Libraries
-License:	GPLv3
+Url:		http://lug.rose-hulman.edu/code/projects/grits
 Source0:	http://lug.rose-hulman.edu/proj/grits/%{name}-%{version}.tar.gz
 Patch1:		grits-0.6.2-link.patch
-BuildRequires:	GL-devel
+BuildRequires:	pkgconfig(cairo)
+BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
-BuildRequires:	cairo-devel
-BuildRequires:	gtk+2-devel
-BuildRequires:	libsoup-devel
-BuildRequires:	libxml2-devel
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(libsoup-2.4)
+BuildRequires:	pkgconfig(libxml-2.0)
 
 %description
 libgis is a Virtual Globe library that handles coordinates and the OpenGL
@@ -25,50 +25,48 @@ used by AWeather.
 
 #------------------------------------------------------------------------------
 
-%package -n %{libgrits}
-
+%package -n %{libname}
 Summary:	Virtual Globe library that handles coordinates and the OpenGL viewport
+Group:		System/Libraries
 
-%description -n %{libgrits}
-libgrits is a Virtual Globe library that handles coordinates and the OpenGL
+%description -n %{libname}
+libname is a Virtual Globe library that handles coordinates and the OpenGL
 viewport. Also provides some generic functionality and a plugin API. It is
 used by AWeather.
 
-%files -n %{libgrits}
-%{_libdir}/*.so.%{major}*
+%files -n %{libname}
+%{_libdir}/lib%{name}.so.%{major}*
 %{_libdir}/grits%{major}/*.so
 
-#------------------------------------------------------------------------------
+#----------------------------------------------------------------------------
 
-%package -n %{libgrits_devel}
-
+%package -n %{devname}
+Summary:	Development files for the Virtual Globe library
 Group:		Development/C
-Summary:	Development files for %libgrits Virtual Globe library
-Requires:	%libgrits == %{version}-%{release}
-Provides:	grits-devel == %{version}
-Provides:	grits2-devel == %{version}
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
 
-%description -n %{libgrits_devel}
-libgrits is a Virtual Globe library that handles coordinates and the OpenGL
+%description -n %{devname}
+libname is a Virtual Globe library that handles coordinates and the OpenGL
 viewport. Also provides some generic functionality and a plugin API. It is
 used by AWeather.
 
 This package contains files needed only for development.
 
-%files -n %{libgrits_devel}
-%{_libdir}/*.so
+%files -n %{devname}
+%doc ChangeLog README TODO
+%{_libdir}/lib%{name}.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/grits.pc
-%doc ChangeLog README TODO
 
-#------------------------------------------------------------------------------
+#----------------------------------------------------------------------------
 
 %package doc
-Requires:	%{libgrits_devel} == %{version}
-Summary:	Documentation for %libgrits Virtual Globe library
+Summary:	Documentation for the Virtual Globe library
+Group:		Books/Computer books
 
 %description doc
-libgrits is a Virtual Globe library that handles coordinates and the OpenGL
+libname is a Virtual Globe library that handles coordinates and the OpenGL
 viewport. Also provides some generic functionality and a plugin API. It is
 used by AWeather.
 
@@ -77,25 +75,25 @@ This package contains API documentation.
 %files doc
 %doc %{_datadir}/gtk-doc/html/grits/
 
-#------------------------------------------------------------------------------
+#----------------------------------------------------------------------------
 
 %package demo
-Summary:	Demo program for %{libgrits} Virtual Globe library
+Summary:	Demo program for the Virtual Globe library
 Group:		Sciences/Geosciences
 
-%files demo
-%{_bindir}/grits-demo
-%{_mandir}/man1/grits-demo.1*
-%doc ChangeLog README TODO
-
 %description demo
-libgrits is a Virtual Globe library that handles coordinates and the OpenGL
+libname is a Virtual Globe library that handles coordinates and the OpenGL
 viewport. Also provides some generic functionality and a plugin API. It is
 used by AWeather.
 
-This package contains demo program using %{libgrits}
+This package contains demo program using %{libname}
 
-#------------------------------------------------------------------------------
+%files demo
+%doc ChangeLog README TODO
+%{_bindir}/grits-demo
+%{_mandir}/man1/grits-demo.1*
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -103,42 +101,13 @@ This package contains demo program using %{libgrits}
 
 %build
 autoreconf
-%configure2_5x	--enable-shared=yes \
-		--enable-static=no
+%configure2_5x \
+	--enable-shared=yes \
+	--enable-static=no
 %make
 
 %install
 %makeinstall_std
-find %{buildroot} -name '*.la' -delete
-install -d -m 755 %{buildroot}%{_docdir}/%{libgrits_devel}
 
-
-%changelog
-* Fri Feb 17 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.7-1
-+ Revision: 776166
-- update to 0.7
-
-* Wed Jan 11 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.6.3-1
-+ Revision: 760186
-- BR fixed
-- unneeded patch removed
-- new version 0.6.3
-
-* Wed Dec 21 2011 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.6.2-1
-+ Revision: 744152
-- fixed linking to libgmodule-2.0
-- new version 0.6.2
-
-* Fri Nov 25 2011 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.6-1
-+ Revision: 733329
-- Fixing dynamic linking
-- Use dynamic linking
-- one more fix in BR
-- one more fix in BR
-- one more fix in BR
-- libsoup BR fixed
-- BR fixed
-- Descriptions fixed
-- Package descriptions added
-- imported package grits
+install -d -m 755 %{buildroot}%{_docdir}/%{devname}
 
