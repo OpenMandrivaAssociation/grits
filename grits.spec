@@ -5,7 +5,7 @@
 Summary:	Virtual Globe library that handles coordinates and the OpenGL viewport
 Name:		grits
 Version:	0.7
-Release:	2
+Release:	3
 License:	GPLv3+
 Group:		System/Libraries
 Url:		http://lug.rose-hulman.edu/code/projects/grits
