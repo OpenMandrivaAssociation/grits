@@ -8,7 +8,7 @@ Version:	0.7
 Release:	3
 License:	GPLv3+
 Group:		System/Libraries
-Url:		http://lug.rose-hulman.edu/code/projects/grits
+Url:		https://lug.rose-hulman.edu/code/projects/grits
 Source0:	http://lug.rose-hulman.edu/proj/grits/%{name}-%{version}.tar.gz
 Patch1:		grits-0.6.2-link.patch
 BuildRequires:	pkgconfig(cairo)
