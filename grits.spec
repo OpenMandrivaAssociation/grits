@@ -11,6 +11,11 @@ Group:		System/Libraries
 Url:		https://lug.rose-hulman.edu/code/projects/grits
 Source0:	http://lug.rose-hulman.edu/proj/grits/%{name}-%{version}.tar.gz
 Patch1:		grits-0.6.2-link.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
